@@ -40,6 +40,7 @@ public class ASkyBlockAssistant extends CacheAssistant {
 
     @Override
     public Selection getSelection(Location location) {
+        if (location == null) return null;
         return adapt(ASkyBlockAPI.getInstance().getIslandAt(location));
     }
 }
