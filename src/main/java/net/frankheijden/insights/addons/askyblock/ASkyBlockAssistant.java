@@ -11,7 +11,7 @@ import org.bukkit.World;
 public class ASkyBlockAssistant extends CacheAssistant {
 
     public ASkyBlockAssistant() {
-        super("ASkyBlock", "ASkyBlock", "island", "1.0.0");
+        super("ASkyBlock", "ASkyBlock", "island", "1.0.2");
     }
 
     public Selection adapt(Island island) {
@@ -41,6 +41,12 @@ public class ASkyBlockAssistant extends CacheAssistant {
     @Override
     public Selection getSelection(Location location) {
         if (location == null) return null;
-        return adapt(ASkyBlockAPI.getInstance().getIslandAt(location));
+        Island island;
+        try {
+            island = ASkyBlockAPI.getInstance().getIslandAt(location);
+        } catch (Throwable th) {
+            return null;
+        }
+        return adapt(island);
     }
 }

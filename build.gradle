@@ -4,7 +4,7 @@ plugins {
 
 String packagePath = 'net.frankheijden.insights.addons.askyblock'
 group = packagePath
-version = '1.0.1'
+version = '1.0.2'
 description = 'ASkyBlockAddon'
 sourceCompatibility = '1.8'
 
