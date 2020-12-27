@@ -1,22 +1,28 @@
 package net.frankheijden.insights.addons.askyblock;
 
+import java.util.Collections;
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 import com.wasteofplastic.askyblock.Island;
 import com.wasteofplastic.askyblock.Settings;
+import net.frankheijden.insights.entities.Area;
 import net.frankheijden.insights.entities.CacheAssistant;
-import net.frankheijden.insights.entities.Selection;
+import net.frankheijden.insights.entities.CuboidSelection;
 import org.bukkit.Location;
 import org.bukkit.World;
 
 public class ASkyBlockAssistant extends CacheAssistant {
 
     public ASkyBlockAssistant() {
-        super("ASkyBlock", "ASkyBlock", "island", "1.0.2");
+        super("ASkyBlock", "ASkyBlock", "island", "1.1.0");
     }
 
-    public Selection adapt(Island island) {
+    public String getId(Island island) {
+        return getPluginName() + "@" + island.getCenter().getBlockX() + "," + island.getCenter().getBlockZ();
+    }
+
+    public Area adapt(Island island) {
         if (island == null) return null;
-        return new Selection(getMin(island), getMax(island));
+        return Area.from(this, getId(island), Collections.singletonList(new CuboidSelection(getMin(island), getMax(island))));
     }
 
     public Location getMin(Island island) {
@@ -39,7 +45,7 @@ public class ASkyBlockAssistant extends CacheAssistant {
     }
 
     @Override
-    public Selection getSelection(Location location) {
+    public Area getArea(Location location) {
         if (location == null) return null;
         Island island;
         try {

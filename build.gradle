@@ -4,7 +4,7 @@ plugins {
 
 String packagePath = 'net.frankheijden.insights.addons.askyblock'
 group = packagePath
-version = '1.0.2'
+version = '1.1.0'
 description = 'ASkyBlockAddon'
 sourceCompatibility = '1.8'
 
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.github.FrankHeijden:Insights:v5.3.8'
+    compileOnly 'com.github.FrankHeijden:Insights:1a81653312'
     compileOnly 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
     compileOnly name: 'askyblock'
 }
